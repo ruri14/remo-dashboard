@@ -1,0 +1,44 @@
+{% extends 'base_.html' %}
+<!DOCTYPE html>
+
+{% block control %}
+<div class="btn">
+    <form action="{% url 'control_light' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" name="on" class = "fas" value="&#xf205;" method="post">
+    </form>  
+</div>
+<div class="btn">
+        <form action="{% url 'control_light' %}" method="post">
+        {% csrf_token %}
+            <input type="submit" name="off" class = "fas" value = "&#xf204;" method="post">
+    </form>
+</div>
+<div class="btn">
+    <form action="{% url 'control_light' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" name="up" class = "fas" value = "&#xf106;" method="post">
+</form>
+</div>
+<div class="btn">
+    <form action="{% url 'control_light' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" name="down" class = "fas" value = "&#xf107;" method="post">
+</form>
+</div>
+<div class="btn">
+    <form action="{% url 'control_light' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" name="max" class = "fas" value="&#xf185;" method="post">
+    </form>
+</div>
+<div class="btn">
+    <form action="{% url 'control_light' %}" method="post">
+    {% csrf_token %}
+        <input type="submit" name="night" class = "fas" value="&#xf186;" method="post">
+    </form>
+</div>
+<div class="text">
+    {{name}} <i class="fas fa-adjust"></i>
+</div>
+{% endblock %}

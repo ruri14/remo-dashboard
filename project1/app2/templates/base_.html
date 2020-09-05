@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>index</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <!-- My CSS -->
+    <style>
+    /* tag */
+    *:focus {  /*クリックしたときの青枠を消す*/
+    outline: none;
+    }
+    div {
+        vertical-align:baseline;
+        background:transparent;
+    }
+    ul {
+        list-style: none;
+    }
+    a {
+        color: #9c9c9c;
+    }
+    a:hover {
+        color: #7e7e7e
+    }
+    label {
+        margin-left: 20px;
+        display: block;
+    }
+    span {
+        display: block;
+    }
+
+    /* class */
+    .text {
+        font-family: 'Courier New', Courier, monospace;
+        margin:30px;
+    }
+
+    .btn, .container {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .btn input {
+        width: 80px;
+        height: 80px;
+        padding: 0;
+        text-decoration: none;
+        text-align: center;
+        background-color: #999;  
+    }
+    
+    .btn input {
+        color: #c0c0c0;
+        border: solid 2px;
+        border-color: #c0c0c0;
+        background-color: white;
+        border-radius: 40px;
+        transition: .4s;
+    }
+    .btn input:hover {
+        cursor: pointer;
+        background-color: #c0c0c0;
+        color: white;
+    }
+    .btn input:active {
+        cursor: pointer;
+        background-color: #7e7e7e;
+        color: white;
+    }
+    .container {
+        position: relative;
+        width: 120px;
+        height: 70px;
+        padding: 1%;
+        font-size: 1.5em;
+        color: #7e7e7e;
+    }
+    .container input {
+        position: absolute;
+        top: 50%; /*親要素を起点に上から50%*/
+        left: 50%;  /*親要素を起点に左から50%*/
+        transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+        -webkit-transform: translateY(-50%) translateX(-50%);
+        color: #696969;
+    }
+    .fontsize08 {
+        font-size: 0.8em;
+    }
+    .fontsize12 {
+        font-size: 1.2em;
+    }
+    .fontsize14 {
+        font-size: 1.4em;
+    }
+    .fontsize16 {
+        font-size: 1.6em;
+    }
+    .fontangle22 {
+       transform: rotateZ( 22deg );
+    }
+    .fontangle45 {
+       transform: rotateZ( 45deg );
+    }
+    .fontangle68 {
+       transform: rotateZ( 68deg );
+    }
+
+    /* id */
+    #sideber {
+        font-family: 'LigatureSymbols';
+        font-size: 1.4em;
+        float: left;
+        width: 15%;
+        text-align: left;
+        margin: 5% 2.5%;
+        padding:0;
+        overflow: hidden;   
+        /* background-color: #aaa;  確認用 */
+    }
+    #sideber label {   /*ボタン装飾*/
+        font-weight: bold;
+        cursor :pointer;
+    }
+    #sideber label:hover {   /*ボタンホバー時*/
+        text-decoration: underline
+    }
+    #sideber input {   /*チェックは見えなくする*/
+        display: none;
+    }
+    #sideber #hidden_box {   /*中身を非表示にしておく*/
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    #sideber input:checked ~ #hidden_box {   /*クリックで中身表示*/
+        padding: 0;
+        height: auto;
+        opacity: 1;
+        text-align: left;
+        /* background-color: #ddd;  確認用 */
+    }
+    #main {
+        font-size: 1.3em;
+        float:right;
+        width: 80%;
+        text-align: left;
+        margin: 5% 0%;
+        /* background-color: #aaa;  */
+    }
+    #box {
+        width: 60%;
+        text-align: center;
+        /* background-color: #ddd; */
+    }
+  </style>
+  </head>
+
+  <body>
+    <div id="sideber">
+      <label>analysis</label>
+      <label for="label1">appliances</label>
+      <input type="checkbox" id="label1"/>
+      <div id="hidden_box">　<!-- 非表示ここから-->
+          <ul>
+            <li><a href="{% url 'control_light' %}"><i class="fas fa-adjust"></i>  light</a></li>
+            <li><a href="{% url 'control_circulator' %}">〄 circulator</a></li>
+            <li><a href="{% url 'control_aircon' %}"><i class="fab fa-airbnb"></i> aircon</a></li>
+          </ul>
+      </div>  <!-- 非表示ここまで-->
+    </div>
+    <div id="main">
+      <div id="box">
+        <div class="text">
+            <form action="{% url 'control_light' %}" method="get">
+                <i class="far fa-lightbulb"></i>
+                il: {{il}} %　　
+                <i class="fas fa-tint"></i>
+                hu: {{hu}} %　　
+                <i class="fas fa-thermometer-half"></i>
+                te: {{te}} ℃　　
+                <i class="fas fa-male"></i>
+                mo: {{mo}}　　
+                {% csrf_token %}
+                {% load static %}
+                <input type="image" src="{% static "reload.png" %}" alt="reload" name="reload" width="15" height="15" method="get">
+            </form>  
+        </div>    
+        {% block control %}
+        {% endblock %}  
+      </div>
+    </div>
+
+    </body>
+</html>

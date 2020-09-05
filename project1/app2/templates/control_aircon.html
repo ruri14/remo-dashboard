@@ -1,0 +1,104 @@
+{% extends 'base_.html' %}
+<!DOCTYPE html>
+
+{% block current_state %}
+<div class="text">
+    <form action="{% url 'control_circurator' %}" method="get">
+        il: {{il}} %　　hu: {{hu}} %　　te: {{te}} ℃　　mo: {{mo}}　
+    {% csrf_token %}
+    {% load static %}
+    <input type="image" src="{% static "reload.png" %}" alt="reload" name="reload" width="15" height="15" method="get">
+    </form>  
+</div>    
+
+{% endblock %}
+
+{% block control %}
+<span>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="on" class = "fas" value="&#xf205;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+            <form action="{% url 'control_aircon' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" name="off" class = "fas" value = "&#xf204;" method="post">
+        </form>
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="cool" class = "fas" value="&#xf2dc;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dry" class = "fas" value="&#xf863;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="warm" class = "fas" value="&#xf7e4;" method="post">
+    </form>  
+    </div>    
+</span>
+<span>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_1" class = "fas" value="&#xf061;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_2" class = "fas fontangle22" value="&#xf061;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_3" class = "fas fontangle45" value="&#xf061;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_4" class = "fas fontangle68" value="&#xf061;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_5" class = "fas" value="&#xf063;" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_auto" class="fontsize08" value="Auto" method="post">
+    </form>  
+    </div>
+    <div class="btn">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="dir_swing" class="fontsize08" value="swing" method="post">
+    </form>  
+    </div>    
+</span>
+<span>
+    <div class="container">
+        <form action="{% url 'control_aircon' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="temp" class="fas fontsize08" value="temp &#xf2c9; " method="post">
+    </form>  
+    </div>     
+</span>
+<div class="text">
+    {{name}} <i class="fab fa-airbnb"></i>
+</div>
+{% endblock %}

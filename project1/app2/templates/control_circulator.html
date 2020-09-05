@@ -1,0 +1,38 @@
+{% extends 'base_.html' %}
+<!DOCTYPE html>
+
+{% block current_state %}
+<div class="text">
+    <form action="{% url 'control_circurator' %}" method="get">
+        il: {{il}} %　　hu: {{hu}} %　　te: {{te}} ℃　　mo: {{mo}}　
+    {% csrf_token %}
+    {% load static %}
+    <input type="image" src="{% static "reload.png" %}" alt="reload" name="reload" width="15" height="15" method="get">
+    </form>  
+</div>    
+
+{% endblock %}
+
+{% block control %}
+<div class="btn">
+    <form action="{% url 'control_circulator' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="on" class = "fas" value="&#xf205;" method="post">
+</form>  
+</div>
+<div class="btn">
+        <form action="{% url 'control_circulator' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="off" class = "fas" value = "&#xf204;" method="post">
+    </form>
+</div>
+<div class="btn">
+    <form action="{% url 'control_circulator' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="plus" class = "fas" value="&#xf067;" method="post">
+</form>  
+</div>
+<div class="text">
+    {{name}}
+</div>
+{% endblock %}

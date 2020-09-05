@@ -1,0 +1,16 @@
+main div {
+  margin: 10; /* 要素の外側の余白を0に定義 */
+  padding: 10; /* 要素の内側の余白を0に定義 */
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.current_state {
+  background-color:#ffffff; 
+
+}
+
+.control {
+  background-color: #ffffff; /* 視覚化のための背景色 */
+}
